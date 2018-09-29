@@ -16,5 +16,10 @@ import ProjectDetail from './screens/ProjectDetail/ProjectDetail.screen';
 const App = createStackNavigator({
   ProjectList: { screen: ProjectList },
   ProjectDetail: { screen: ProjectDetail },
+}, {
+  headerMode: 'none',
+  navigationOptions: {
+      headerVisible: false,
+  }
 });
 export default App;
