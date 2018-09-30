@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import styles from './ProjectDetail.style';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Tabs, Tab, FooterTab, Button, ScrollableTab, Icon, Fab, Left, Body, Right, Footer } from 'native-base';
 import Swiper from 'react-native-swiper';
@@ -497,28 +497,302 @@ class ProjectDetail extends Component {
 
           </View>
 
+
+          {/*Background*/}
+          <View style={styles.bgColor}></View>
+          <View style={styles.scrollViewBottom}>
+          <Text style={styles.AmenitiesText}>Trending Projects</Text>
+          <ScrollView horizontal={true}>
+          
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+
+            {/*---2----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+            {/*---3----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+            {/*---4----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+            </Card>
+
+            {/*----5-----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+            {/*----6-----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+
+            {/*----7----*/}
+            <Card style={{marginBottom:25}}>
+              <CardItem >
+                <Body>
+                  <View style={styles.scrollCard}>
+                    <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                    <View style={styles.scrollText}>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                     </Text>
+                        <Text style={styles.mainText}>
+                          BY SRS Builder
+                     </Text>
+                        <Text style={styles.headerText}>
+                          BY SRS Builder
+                     </Text>
+                      </View>
+
+                      <View style={styles.scrollPrice}>
+                        <Text style={styles.price}>
+                          ₹54.38 Lac- 1.36Cr
+                         </Text>
+                      </View>
+
+                      <View>
+                        <Text style={styles.mainText}>
+                          Virasat Enorme
+                         </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Body>
+              </CardItem>
+
+            </Card>
+          </ScrollView>
+          </View>
+
+
         </KeyboardAwareScrollView>
-        <Footer>
+        <Footer style={{height:35}}>
           <View style={styles.footer}>
-            <View style={styles.footerview}>
+           
 
               <View style={styles.footerview}>
-                <Icon type="FontAwesome" name='download' />
+              <Image  source={require('../../images/download.png')} />
                 <Text style={styles.textColor}>Brochure</Text>
               </View>
 
-              {/* <Fab
-                direction="up"
-                style={styles.fabPhoneIcon}>
-                <Icon type="FontAwesome" name='home' />
-                <Icon ios={'ios-home'} android={'md-home'} style={styles.icon} />}
-              </Fab> */}
-              <View>
-                <Icon type="FontAwesome" name='download' />
-                <Text style={styles.textColor}>Brochure</Text>
+            <View style={styles.footerview}>
+            <Fab
+            direction="up"
+            containerStyle={{ }}
+            style={{ backgroundColor: '#59CDB5',marginLeft:-20,position:'absolute',left:5 }}
+            position="bottomRight">
+               <Image  source={require('../../images/phone.png')} />
+            </Fab>
+              </View>
+              <View style={styles.footerview}>
+              <Image  source={require('../../images/black-envelope.png')} />
+                <Text style={styles.textColor}>send Message</Text>
               </View>
 
-            </View>
+            
           </View>
 
         </Footer>

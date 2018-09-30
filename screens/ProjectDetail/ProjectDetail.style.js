@@ -56,7 +56,10 @@ export default StyleSheet.create({
   },
   footer: {
     width: width,
-    backgroundColor: '#222'
+    backgroundColor: '#222',
+    flexDirection: 'row',
+    height:35,
+  
   },
   fabPhoneIcon: {
     width: width / 2,
@@ -68,10 +71,15 @@ export default StyleSheet.create({
   },
   footerview: {
     display: 'flex',
+    width:width/3,
     flexDirection: 'row',
+    justifyContent:'center',
+    alignItems:'center',
+    position:'relative'
   },
   textColor: {
     color: 'white',
+    paddingLeft: 5,
   },
   logoContainer: {
     position: 'absolute',
@@ -274,6 +282,27 @@ export default StyleSheet.create({
     justifyContent:'center',
     alignItems: 'flex-start',
     paddingBottom: 10,
+  },
+  scrollcardImage:{
+    width:100,
+    height:110
+  },
+  price:{
+    paddingTop: 10,
+    paddingLeft: 5,
+    color:'blue',
+    fontSize:14,
+    paddingBottom: 10,
+
+  },
+  scrollCard:{
+    flexDirection: 'row',
+  },
+  scrollText:{
+    paddingLeft: 8,
+  },
+  scrollViewBottom:{
+    paddingBottom: 20,
   },
  
 });
