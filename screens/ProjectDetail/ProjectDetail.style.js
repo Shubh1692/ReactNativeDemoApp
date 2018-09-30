@@ -1,8 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
-const { width } = Dimensions.get('window')
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
-  
   content: {
     borderColor: 'green',
     borderWidth: 1
@@ -12,7 +11,7 @@ export default StyleSheet.create({
     height: 200,
     // borderColor: 'yellow',
     // borderWidth: 2,
-    padding:10
+    padding: 10
   },
   slide: {
     width: width,
@@ -58,8 +57,8 @@ export default StyleSheet.create({
     width: width,
     backgroundColor: '#222',
     flexDirection: 'row',
-    height:35,
-  
+    height: 35,
+
   },
   fabPhoneIcon: {
     width: width / 2,
@@ -71,11 +70,11 @@ export default StyleSheet.create({
   },
   footerview: {
     display: 'flex',
-    width:width/3,
+    width: width / 3,
     flexDirection: 'row',
-    justifyContent:'center',
-    alignItems:'center',
-    position:'relative'
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative'
   },
   textColor: {
     color: 'white',
@@ -94,215 +93,215 @@ export default StyleSheet.create({
     width: 70,
     height: 40
   },
-  titleHeading:{
-    color:'#fff',
-    fontSize:18,
+  titleHeading: {
+    color: '#fff',
+    fontSize: 18,
     paddingLeft: 10,
-   
-  },
-  listView:{
-    marginTop: 30,
-    borderTopWidth: 1,
-    borderColor:'#DCDCDC',
-    marginHorizontal: 8,
-  
-  },
-  listFirst:{
-    flexDirection: 'row',
-    marginVertical: 10,
-    paddingVertical:10
-  },
-  listSecond:{
-    flexDirection: 'row',
-    backgroundColor:'#F7F8FA',
-    paddingVertical:10,
-    // marginVertical: 10,
-  },
-  listThird:{
-    flexDirection: 'row',
-    marginVertical: 10,
-    paddingVertical:10,
 
   },
-  listFour:{
+  listView: {
+    marginTop: 30,
+    borderTopWidth: 1,
+    borderColor: '#DCDCDC',
+    marginHorizontal: 8,
+
+  },
+  listFirst: {
     flexDirection: 'row',
-    paddingVertical:15,
-    backgroundColor:'#F7F8FA',
+    marginVertical: 10,
+    paddingVertical: 10
   },
-  firstInner1:{
-  width:width/2,
-  borderColor: '#DCDCDC',
-  borderRightWidth: 1,
-  paddingLeft: 10,
-  flexDirection: 'row',
+  listSecond: {
+    flexDirection: 'row',
+    backgroundColor: '#F7F8FA',
+    paddingVertical: 10,
+    // marginVertical: 10,
   },
-  firstInner2:{
-    width:width/2-8,
+  listThird: {
+    flexDirection: 'row',
+    marginVertical: 10,
+    paddingVertical: 10,
+
+  },
+  listFour: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    backgroundColor: '#F7F8FA',
+  },
+  firstInner1: {
+    width: width / 2,
+    borderColor: '#DCDCDC',
+    borderRightWidth: 1,
+    paddingLeft: 10,
+    flexDirection: 'row',
+  },
+  firstInner2: {
+    width: width / 2 - 8,
     paddingLeft: 10,
     flexDirection: 'row',
     // borderColor: '#000',
     // borderWidth: 1,
   },
-  fourInner:{
-    width:width,
+  fourInner: {
+    width: width,
     paddingLeft: 10,
   },
-  headerText:{
-    fontSize:10
+  headerText: {
+    fontSize: 10
   },
-  mainText:{
-    color:'#000',
-    fontSize:14,
+  mainText: {
+    color: '#000',
+    fontSize: 14,
   },
-  AmenitiesText:{
-    color:'#000',
-    fontSize:14,
+  AmenitiesText: {
+    color: '#000',
+    fontSize: 14,
     paddingLeft: 10
     ,
   },
-  floorText:{
-    color:'#000',
-    fontSize:14,
+  floorText: {
+    color: '#000',
+    fontSize: 14,
     paddingVertical: 10,
     paddingLeft: 10,
   },
-    mainTextFour:{
-    color:'#198CDD',
-    fontSize:14,
+  mainTextFour: {
+    color: '#198CDD',
+    fontSize: 14,
   },
-  bottonText:{
-    color:'#000',
-    fontSize:11,
+  bottonText: {
+    color: '#000',
+    fontSize: 11,
   },
-  bgColor:{
+  bgColor: {
     marginVertical: 10,
-    backgroundColor:'#F7F8FA',
-    width:width,
-    height:20,
+    backgroundColor: '#F7F8FA',
+    width: width,
+    height: 20,
   },
-  tabSections:{
+  tabSections: {
     paddingVertical: 8,
   },
-  tabsStyle:{
-    height:280,
+  tabsStyle: {
+    height: 280,
   },
-  tabStyle:{
-    width:300,
-    height:50,
+  tabStyle: {
+    width: 300,
+    height: 50,
     marginHorizontal: 5,
   },
-  cardList:{
+  cardList: {
     // height:1000,
   },
-  cardItem:{
-    height:800,
+  cardItem: {
+    height: 800,
     // borderColor:'red',
     // borderWidth:1,
-    
+
   },
-  textContent:{
-    height:800,
+  textContent: {
+    height: 800,
     // borderColor:'red',
     // borderWidth:1
   },
-  cardBody:{
-   height:500,
-    width:width,
+  cardBody: {
+    height: 500,
+    width: width,
     marginRight: 5,
     // borderColor:'red',
     // borderWidth:1,
 
 
   },
-  cardImageView:{
-    height:70,
-    width:width-100,
+  cardImageView: {
+    height: 70,
+    width: width - 100,
     alignItems: 'center',
   },
-  cardImage:{
-    width:100,
-    height:50
+  cardImage: {
+    width: 100,
+    height: 50
   },
-  cardText:{
+  cardText: {
     // borderColor:'#000',
     // borderWidth:1,
     marginLeft: -17,
     flexDirection: 'row',
-    backgroundColor:'#F7F8FA',
+    backgroundColor: '#F7F8FA',
     paddingLeft: 0,
     marginRight: 25,
     paddingVertical: 8,
-    height:50,
+    height: 50,
   },
-  cardTextInner1:{
-    width:width/2,
+  cardTextInner1: {
+    width: width / 2,
     borderColor: '#DCDCDC',
     marginRight: 5,
   },
-  iconImage:{
-    width:30,
-    height:30,
+  iconImage: {
+    width: 30,
+    height: 30,
     marginRight: 10,
   },
-  cardmainText:{
+  cardmainText: {
     paddingLeft: 5,
-    color:'#000',
-    fontSize:14,
+    color: '#000',
+    fontSize: 12,
   },
-  amenitiescardImage:{
-    width:30,
-    height:30
+  amenitiescardImage: {
+    width: 30,
+    height: 30
   },
-  amenitiesView:{
+  amenitiesView: {
     flexDirection: 'column',
-    width:width/3,
+    width: width / 3,
     paddingHorizontal: 10,
     paddingVertical: 15,
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  amView:{
-    flexDirection:'row',
-    width:width,
+  amView: {
+    flexDirection: 'row',
+    width: width,
   },
-  facuility:{
-    flexDirection:'row',
-    width:width
+  facuility: {
+    flexDirection: 'row',
+    width: width
   },
-  facuility1:{
-    width:width/2,
+  facuility1: {
+    width: width / 2,
     paddingLeft: 10,
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'flex-start',
     paddingBottom: 10,
   },
-  facuility2:{
-    width:width/2,
+  facuility2: {
+    width: width / 2,
     paddingLeft: 10,
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'flex-start',
     paddingBottom: 10,
   },
-  scrollcardImage:{
-    width:100,
-    height:110
+  scrollcardImage: {
+    width: 100,
+    height: 110
   },
-  price:{
+  price: {
     paddingTop: 10,
     paddingLeft: 5,
-    color:'blue',
-    fontSize:14,
+    color: 'blue',
+    fontSize: 14,
     paddingBottom: 10,
 
   },
-  scrollCard:{
+  scrollCard: {
     flexDirection: 'row',
   },
-  scrollText:{
+  scrollText: {
     paddingLeft: 8,
   },
-  scrollViewBottom:{
+  scrollViewBottom: {
     paddingBottom: 20,
   },
- 
+
 });
