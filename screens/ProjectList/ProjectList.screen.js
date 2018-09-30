@@ -29,7 +29,7 @@ class ProjectList extends Component {
     return (
       <Container>
         <Header />
-        <Content>
+        <Content >
           {projectList.map((project) => (<Card key={project.id}>
             <CardItem cardBody>
               <Icon style={styles.projectLike} active name="heart" />
@@ -38,7 +38,7 @@ class ProjectList extends Component {
               })}>
                 <Image source={{ uri: project.image }} style={styles.projectImage} /></TouchableHighlight>
             </CardItem>
-            <TouchableHighlight onPress={() => navigate('ProjectDetail', {
+            <TouchableHighlight style={styles.btn} onPress={() => navigate('ProjectDetail', {
               project
             })}>
               <CardItem >

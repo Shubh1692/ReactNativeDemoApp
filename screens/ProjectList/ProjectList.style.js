@@ -25,5 +25,9 @@ export default StyleSheet.create({
     // backgroundColor: '#25D366',
     // borderRadius: 50,
     // fontSize: 12
-  }
+  },
+  btn: {
+    borderColor: 'red',
+    borderWidth: 1,
+  },
 });
