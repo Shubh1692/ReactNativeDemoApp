@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, Platform } from 'react-native';
 import styles from './ProjectDetail.style';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Tabs, Tab, FooterTab, Button, ScrollableTab, Icon, Fab, Left, Body, Right, Footer, Picker } from 'native-base';
+import { Container, Card, CardItem, Tabs, Tab, ScrollableTab, Fab, Body, Footer } from 'native-base';
 import Swiper from 'react-native-swiper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
-
-
-const renderPagination = (index, total, context) => {
+import HTML from 'react-native-render-html';
+import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
+const renderPagination = (index, total) => {
   return (
     <View style={styles.paginationStyle}>
       <Text style={styles.swiperCount}>
@@ -18,7 +18,6 @@ const renderPagination = (index, total, context) => {
 }
 
 class ProjectDetail extends Component {
-
   render() {
 
     const { navigation } = this.props;
@@ -27,9 +26,31 @@ class ProjectDetail extends Component {
       bhk: project.floorplans.map((floorplan) => floorplan.bhk).filter((bhk, index, self) => self.indexOf(bhk) === index),
       type: project.floorplans.length && project.floorplans[0] && project.floorplans[0].type
     }
+    const currentDate = new Date().getTime();
+    const launchDate = new Date(project.launch_date.date).getTime();
+    const possessionDate = new Date(project.possession_date.date).getTime();
+    const region = {
+      latitude: parseFloat(project.lat),
+      longitude: parseFloat(project.lng),
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    }
+    let constructionStatus;
+    if (currentDate < launchDate) {
+      constructionStatus = 'Pre Lanch';
+    } else if (currentDate > launchDate && currentDate < possessionDate) {
+      constructionStatus = 'Under Construction';
+    } else {
+      constructionStatus = 'Completed, Ready to Move';
+    }
+    const LatLng = {
+      latitude: parseFloat(project.lat),
+      longitude: parseFloat(project.lng),
+    }
     console.log(project);
     return (
       <Container>
+
         <KeyboardAwareScrollView>
 
           <Swiper
@@ -47,8 +68,10 @@ class ProjectDetail extends Component {
             <Image style={styles.logo} source={{
               uri: project.logo
             }} />
-            <Text style={styles.titleHeading}>{project.name}</Text>
-            <Text>{project.location}, {project.city}</Text>
+            <View style={styles.logoContainerPadding}>
+              <Text style={styles.titleHeading}>{project.name}</Text>
+              <Text style={styles.titleLocation}>{project.location}, {project.city}</Text>
+            </View>
           </View>
 
           <View style={styles.listView}>
@@ -57,8 +80,7 @@ class ProjectDetail extends Component {
               <View style={styles.firstInner1}>
                 <View>
                   <Text style={styles.headerText}>Construction status</Text>
-                  <Text style={styles.mainText}>Ready to move</Text>
-                  <Text style={styles.bottonText}>Completed in Oct 2015</Text>
+                  <Text style={styles.mainText}>{constructionStatus}</Text>
                 </View>
               </View>
 
@@ -122,7 +144,7 @@ class ProjectDetail extends Component {
                   <Image style={styles.iconImage} source={require('../../images/5D.png')} />
                 </View>
                 <Text style={styles.headerText}>Rera Details</Text>
-                <Text style={styles.mainTextFour}>{project.rera_link}</Text>
+                <Text numberOfLines={1} ellipsizeMode='tail' style={styles.mainTextFour}>{project.rera_link}</Text>
               </View>
 
             </View>
@@ -135,7 +157,7 @@ class ProjectDetail extends Component {
           <View style={styles.tabSections}>
             <Text style={styles.floorText}>Floor Plans</Text>
             <Tabs style={styles.tabsStyle} transparent renderTabBar={() => <ScrollableTab />}>
-              {project.floorplans.map((floorplan) => (<Tab heading="2BHK" style={styles.tabStyle}>
+              {project.floorplans.map((floorplan) => (<Tab heading={floorplan.title} style={styles.tabStyle}>
                 <View style={styles.cardList}>
                   <Card>
                     <View style={styles.cardItem}>
@@ -161,7 +183,7 @@ class ProjectDetail extends Component {
                                 </View>
                               </View>
                               {/*---2---*/}
-                              <View >
+                              <View style={styles.cardTextWhiteBg}>
                                 <View style={styles.cardTextInner1}>
                                   <Text style={styles.headerText}> Liveable Area</Text>
                                   <Text style={styles.cardmainText}>{floorplan.liveablearea || 'NA'}</Text>
@@ -171,7 +193,7 @@ class ProjectDetail extends Component {
                               <View style={styles.cardText}>
                                 <View style={styles.cardTextInner1}>
                                   <Text style={styles.headerText}> New Booking Price</Text>
-                                  <Text style={styles.cardmainText}>{` ₹ ${floorplan.price}` || 'Price on Request'}</Text>
+                                  <Text style={styles.cardmainText}>{` ₹ ${floorplan.price}` || 'NA'}</Text>
                                 </View>
 
                                 <View style={styles.firstInner2}>
@@ -181,7 +203,6 @@ class ProjectDetail extends Component {
                                   </View>
                                 </View>
                               </View>
-
                             </View>
                           </View>
                         </Body>
@@ -191,13 +212,21 @@ class ProjectDetail extends Component {
                 </View>
               </Tab>))}
             </Tabs>
+            <View style={styles.disclaimerTextBox}>
+              <Text style={styles.disclaimerTextHeading}>
+                Disclaimer:
+                </Text>
+              <Text style={styles.disclaimerTextDesc}>
+                {' '}  Liveable area is 99acres defined based on internal calculations.
+                </Text>
+            </View>
           </View>
 
           {/*Background*/}
           <View style={styles.bgColor}></View>
           {/*---4----*/}
           <View>
-            <Text style={styles.AmenitiesText}>Amenities</Text>
+            <Text style={styles.amenitiesText}>Amenities</Text>
             <View style={styles.amView}>
               <View style={styles.amenitiesView} >
                 <Image style={styles.amenitiescardImage} source={require('../../images/6D.png')} />
@@ -282,278 +311,62 @@ class ProjectDetail extends Component {
           {/*Background*/}
           <View style={styles.bgColor}></View>
           <View style={styles.scrollViewBottom}>
-            <Text style={styles.AmenitiesText}>Trending Projects</Text>
+            <Text style={styles.amenitiesText}>Description</Text>
+            <View>
+              <View style={styles.summeryText}>
+                <HTML html={project.summary} />
+              </View>
+            </View>
+          </View>
+          <View style={styles.bgColor}></View>
+          <View style={styles.scrollViewBottom}>
+            <Text style={styles.amenitiesText}>Trending Projects</Text>
             <ScrollView horizontal={true}>
-
-              <Card style={{ marginBottom: 25 }}>
+              {project.project_cards.map((projectCard) => (<Card key={projectCard.id} style={styles.projectCards}>
                 <CardItem >
                   <Body>
                     <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
+                      <Image style={styles.scrollcardImage} source={{
+                        uri: projectCard.image
+                      }} />
                       <View style={styles.scrollText}>
 
                         <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
+                          <Text numberOfLines={1} ellipsizeMode='tail' style={styles.mainText}>
+                            {projectCard.title}
+                          </Text>
+                          <Text style={styles.subtitleText}>
+                            {projectCard.subtitle}
+                          </Text>
+                          <Text numberOfLines={4} ellipsizeMode='tail' style={styles.headerText}>
+                            {projectCard.description}
+                          </Text>
                         </View>
                       </View>
                     </View>
                   </Body>
                 </CardItem>
-
-              </Card>
-
-              {/*---2----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-
-              </Card>
-              {/*---3----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-
-              </Card>
-              {/*---4----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-              </Card>
-
-              {/*----5-----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-
-              </Card>
-              {/*----6-----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-
-              </Card>
-
-              {/*----7----*/}
-              <Card style={{ marginBottom: 25 }}>
-                <CardItem >
-                  <Body>
-                    <View style={styles.scrollCard}>
-                      <Image style={styles.scrollcardImage} source={require('../../images/4.jpg')} />
-                      <View style={styles.scrollText}>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                     </Text>
-                          <Text style={styles.mainText}>
-                            BY SRS Builder
-                     </Text>
-                          <Text style={styles.headerText}>
-                            BY SRS Builder
-                     </Text>
-                        </View>
-
-                        <View style={styles.scrollPrice}>
-                          <Text style={styles.price}>
-                            ₹54.38 Lac- 1.36Cr
-                         </Text>
-                        </View>
-
-                        <View>
-                          <Text style={styles.mainText}>
-                            Virasat Enorme
-                         </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </Body>
-                </CardItem>
-
-              </Card>
+              </Card>))}
             </ScrollView>
           </View>
-
+          <View style={styles.bgColor}></View>
+          <View style={styles.scrollViewBottom}>
+            <Text style={styles.amenitiesText}>Location</Text>
+            <View >
+              <MapView
+                style={styles.mapStyle}
+                region={region}
+              >
+                <Marker
+                  coordinate={LatLng}
+                  title="Marker"
+                /></MapView>
+            </View>
+          </View>
 
         </KeyboardAwareScrollView>
-        <Footer style={{ height: 35 }}>
+        <Footer style={{ height: 50 }}>
           <View style={styles.footer}>
-
-
             <View style={styles.footerview}>
               <Image source={require('../../images/download.png')} />
               <Text style={styles.textColor}>Brochure</Text>
@@ -572,10 +385,7 @@ class ProjectDetail extends Component {
               <Image source={require('../../images/black-envelope.png')} />
               <Text style={styles.textColor}>send Message</Text>
             </View>
-
-
           </View>
-
         </Footer>
       </Container>
 

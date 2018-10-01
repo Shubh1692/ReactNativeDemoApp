@@ -29,6 +29,7 @@ export default StyleSheet.create({
   image: {
     width: width,
     height: 200,
+    resizeMode: 'cover'
     // borderColor: 'blue',
     // borderWidth: 1
 
@@ -57,7 +58,7 @@ export default StyleSheet.create({
     width: width,
     backgroundColor: '#222',
     flexDirection: 'row',
-    height: 35,
+    height: 50,
 
   },
   fabPhoneIcon: {
@@ -74,7 +75,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative'
+    position: 'relative',
+    fontSize:14
   },
   textColor: {
     color: 'white',
@@ -95,9 +97,15 @@ export default StyleSheet.create({
   },
   titleHeading: {
     color: '#fff',
-    fontSize: 18,
-    paddingLeft: 10,
+    fontSize: 16,
+    paddingLeft: 10
 
+  },
+  titleLocation:{
+    paddingLeft: 10,
+  },
+  logoContainerPadding:{
+    // paddingLeft: 20,
   },
   listView: {
     marginTop: 30,
@@ -147,17 +155,18 @@ export default StyleSheet.create({
     paddingLeft: 10,
   },
   headerText: {
-    fontSize: 10
+    fontSize: 10,
+   
   },
   mainText: {
     color: '#000',
-    fontSize: 14,
+    fontSize: 12,
   },
-  AmenitiesText: {
+  amenitiesText: {
     color: '#000',
     fontSize: 14,
-    paddingLeft: 10
-    ,
+    paddingLeft: 10,
+    fontWeight: 'bold'
   },
   floorText: {
     color: '#000',
@@ -168,6 +177,7 @@ export default StyleSheet.create({
   mainTextFour: {
     color: '#198CDD',
     fontSize: 14,
+    marginRight:15
   },
   bottonText: {
     color: '#000',
@@ -183,18 +193,20 @@ export default StyleSheet.create({
     paddingVertical: 8,
   },
   tabsStyle: {
-    height: 280,
+    height: 300,
   },
   tabStyle: {
-    width: 300,
     height: 50,
     marginHorizontal: 5,
+    // width : width * 0.70
   },
   cardList: {
     // height:1000,
+    // display:"flex",
+    // justifyContent:"center"
   },
   cardItem: {
-    height: 800,
+    height: 232,
     // borderColor:'red',
     // borderWidth:1,
 
@@ -205,8 +217,8 @@ export default StyleSheet.create({
     // borderWidth:1
   },
   cardBody: {
-    height: 500,
-    width: width,
+    height: 210,
+    // width: width,
     marginRight: 5,
     // borderColor:'red',
     // borderWidth:1,
@@ -215,11 +227,11 @@ export default StyleSheet.create({
   },
   cardImageView: {
     height: 70,
-    width: width - 100,
+    width: width - 40,
     alignItems: 'center',
   },
   cardImage: {
-    width: 100,
+    width: 150,
     height: 50
   },
   cardText: {
@@ -232,6 +244,18 @@ export default StyleSheet.create({
     marginRight: 25,
     paddingVertical: 8,
     height: 50,
+    width:width-16
+  },
+  cardTextWhiteBg: {
+    // borderColor:'#000',
+    // borderWidth:1,
+    marginLeft: -17,
+    flexDirection: 'row',
+    paddingLeft: 0,
+    marginRight: 25,
+    paddingVertical: 8,
+    height: 50,
+    width:width-16
   },
   cardTextInner1: {
     width: width / 2,
@@ -299,9 +323,38 @@ export default StyleSheet.create({
   },
   scrollText: {
     paddingLeft: 8,
+    width : width * 0.75 - 118
   },
   scrollViewBottom: {
     paddingBottom: 20,
   },
-
+  disclaimerTextHeading: {
+    paddingLeft: 10,
+    fontWeight: 'bold',
+    fontSize: 10
+  },
+  disclaimerTextDesc: {
+    fontSize: 10
+  },
+  disclaimerTextBox: {
+    flexDirection: 'row',
+    paddingTop:10
+  },
+  summeryText: {
+    fontSize: 10,
+    paddingLeft: 10,
+  },
+  projectCards: {
+    width : width * 0.75
+  },
+  subtitleText: {
+    fontSize: 12,
+    color: '#999',
+    paddingRight: 5,
+    width : width * 0.70
+  },
+  mapStyle:{
+    width : width,
+    height:300
+  }
 });

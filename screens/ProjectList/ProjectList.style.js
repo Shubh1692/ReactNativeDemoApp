@@ -1,10 +1,9 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet,Dimensions } from 'react-native';
+const { width } = Dimensions.get('window');
 export default StyleSheet.create({
   projectImage: {
-    height: 200,
-    width: null,
-    flex: 1
+    height: 250,
+    width: width
   },
   projectTitle: {
     fontSize: 12
